@@ -24,6 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Подключаем Tidio */}
+        <script
+          src="https://code.tidio.co/76axdysafjuhi2y8ztnflti1lmjjirqx.js"
+          async
+        ></script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
