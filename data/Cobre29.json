@@ -1,0 +1,34 @@
+{
+    "title": "Cobre 29 Massage & Spa",
+    "description": "Centro de masajes y spa ubicado en el Hotel Meliá Valencia. En Cobre 29, ofrecemos una experiencia de bienestar única gracias a nuestras inmersiones, instalaciones y el uso de cobre, reconocido por sus beneficios para la salud.",
+    "address": "Av. de les Corts Valencianes, 52. Planta 3 del Hotel Meliá Palacio de Congresos, 46015 Valencia, España",
+    "phone": "+34 962 47 52 13",
+    "email": "info@cobre29.es",
+    "faqs": [
+      {
+        "question": "¿Dónde está ubicado Cobre 29?",
+        "answer": "Estamos en la tercera planta del Hotel Meliá Valencia, en Av. de les Corts Valencianes, 52, 46015 Valencia."
+      },
+      {
+        "question": "¿Qué es una 'inmersión'?",
+        "answer": "Una inmersión es nuestra experiencia de relajación completa, que incluye acceso a piscina principal, jacuzzi, sauna, baño turco, duchas interactivas y bebida especial de bienvenida."
+      },
+      {
+        "question": "¿Puedo regalar una sesión?",
+        "answer": "Sí, ofrecemos tarjetas regalo con un 20% de descuento. Puedes adquirirlas directamente desde nuestra página web en la sección 'Regala'."
+      },
+      {
+        "question": "¿Qué promociones tienen actualmente?",
+        "answer": "Tenemos la promoción Ryokan: relajación entre semana por solo 35€. Consulta más promociones en la sección 'Promociones' de nuestra web."
+      },
+      {
+        "question": "¿Qué tipo de instalaciones están incluidas?",
+        "answer": "Piscina con cascadas y camas de agua, baño turco, sauna, jacuzzi, duchas sensoriales y una bebida exclusiva servida en vasos de cobre."
+      },
+      {
+        "question": "¿Necesito reservar con antelación?",
+        "answer": "Sí, te recomendamos reservar con antelación a través de nuestro sitio web para asegurar tu plaza."
+      }
+    ],
+    "tidioBotUrl": "https://code.tidio.co/твой_скрипт.js"
+  }
