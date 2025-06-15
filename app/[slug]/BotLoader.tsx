@@ -1,15 +1,18 @@
-'use client';
-
-import { useEffect } from 'react';
+// app/[slug]/BotLoader.tsx
+import { useEffect } from "react";
 
 export default function BotLoader({ url }: { url: string }) {
   useEffect(() => {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = url;
     script.async = true;
     document.body.appendChild(script);
-    return () => document.body.removeChild(script);
+
+    // ✅ функция очистки — удаляем скрипт
+    return () => {
+      document.body.removeChild(script);
+    };
   }, [url]);
 
-  return null; // ничего не рендерим, только подключаем скрипт
+  return null; // компонент ничего не рендерит
 }
