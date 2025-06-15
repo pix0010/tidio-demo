@@ -21,7 +21,7 @@ export default async function DemoPage({ params }: Props) {
 
   try {
     data = (await import(`../../data/${params.slug}.json`)).default;
-  } catch (err) {
+} catch {
     return notFound();
   }
 
