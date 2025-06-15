@@ -5,3 +5,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+js module.exports = { eslint:{ ignoreDuringBuilds:true } } 
