@@ -6,16 +6,17 @@ interface DemoData {
   description: string;
   services?: string[];
   whyUs?: string[];
-  faqs?: { question: string; answer: string }[];
   tidioBotUrl: string;
+  faqs?: { question: string; answer: string }[];
 }
 
-// 👇 Обязательная функция, если не используешь generateStaticParams
-export default async function DemoPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default async function DemoPage({ params }: PageProps) {
   let data: DemoData;
 
   try {
@@ -24,7 +25,7 @@ export default async function DemoPage({
     return notFound();
   }
 
-  const { title, description, services = [], whyUs = [], faqs = [], tidioBotUrl } = data;
+  const { title, description, services = [], whyUs = [], tidioBotUrl, faqs = [] } = data;
 
   return (
     <main className="p-6 max-w-3xl mx-auto">
@@ -43,7 +44,7 @@ export default async function DemoPage({
       )}
 
       {whyUs.length > 0 && (
-        <section className="mb-8">
+        <section>
           <h2 className="text-2xl font-semibold mb-2">¿Por qué elegirnos?</h2>
           <ul className="list-disc list-inside">
             {whyUs.map((w) => (
@@ -54,7 +55,7 @@ export default async function DemoPage({
       )}
 
       {faqs.length > 0 && (
-        <section className="mb-8">
+        <section className="mt-8">
           <h2 className="text-2xl font-semibold mb-2">Preguntas frecuentes</h2>
           <div className="space-y-4">
             {faqs.map((faq, idx) => (
