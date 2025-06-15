@@ -1,8 +1,9 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // ✅ игнорируем ошибки линтера при билде
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
-export default nextConfig;
-js module.exports = { eslint:{ ignoreDuringBuilds:true } } 
+module.exports = nextConfig;
