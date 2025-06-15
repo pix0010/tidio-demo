@@ -1,9 +1,7 @@
-// @ts-nocheck
 import { notFound } from "next/navigation";
-import BotLoader from "./BotLoader";
+import BotLoader       from "./BotLoader";
 
 type FAQ = { question: string; answer: string };
-
 type DemoData = {
   title: string;
   description: string;
@@ -13,17 +11,22 @@ type DemoData = {
   tidioBotUrl: string;
 };
 
-export default async function DemoPage({ params }: { params: { slug: string } }) {
+// ⬇︎ params — это Promise, поэтому деструктурируем после await
+export default async function DemoPage(
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params;            // ⬅︎ «раскрыли» промис
   let data: DemoData;
 
   try {
-    data = (await import(`../../data/${params.slug}.json`)).default;
+    data = (await import(`../../data/${slug}.json`)).default;
   } catch {
     return notFound();
   }
 
   const { title, description, services = [], whyUs = [], faqs = [], tidioBotUrl } = data;
 
+  /* ---------- JSX как был (не меняем) ---------- */
   return (
     <main className="p-6 max-w-3xl mx-auto">
       <h1 className="text-4xl font-bold mb-2">{title}</h1>
@@ -32,14 +35,14 @@ export default async function DemoPage({ params }: { params: { slug: string } })
       {services.length > 0 && (
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">Servicios</h2>
-          <ul className="list-disc list-inside">{services.map((s) => <li key={s}>{s}</li>)}</ul>
+          <ul className="list-disc list-inside">{services.map(s => <li key={s}>{s}</li>)}</ul>
         </section>
       )}
 
       {whyUs.length > 0 && (
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">¿Por qué elegirnos?</h2>
-          <ul className="list-disc list-inside">{whyUs.map((w) => <li key={w}>{w}</li>)}</ul>
+          <ul className="list-disc list-inside">{whyUs.map(w => <li key={w}>{w}</li>)}</ul>
         </section>
       )}
 
@@ -47,10 +50,10 @@ export default async function DemoPage({ params }: { params: { slug: string } })
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">Preguntas frecuentes</h2>
           <div className="space-y-4">
-            {faqs.map((faq, i) => (
+            {faqs.map((f, i) => (
               <div key={i}>
-                <h3 className="font-medium text-lg">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
+                <h3 className="font-medium text-lg">{f.question}</h3>
+                <p className="text-gray-600">{f.answer}</p>
               </div>
             ))}
           </div>
