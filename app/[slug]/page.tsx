@@ -9,11 +9,11 @@ type Props = {
 };
 
 // 👇 Сам компонент страницы
-export default function DemoPage({ params }: Props) {
+export default async function DemoPage({ params }: Props) {
   let data;
   try {
-    data = require(`../../data/${params.slug}.json`);
-  } catch (error) {
+    data = (await import(`../../data/${params.slug}.json`)).default;
+  } catch {
     return notFound();
   }
 
@@ -57,7 +57,7 @@ export default function DemoPage({ params }: Props) {
         <section className="mt-8">
           <h2 className="text-2xl font-semibold mb-2">Preguntas frecuentes</h2>
           <div className="space-y-4">
-            {faqs.map((faq: any, idx: number) => (
+            {faqs.map((faq: { question: string; answer: string }, idx: number) => (
               <div key={idx}>
                 <h3 className="font-medium text-lg">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>
