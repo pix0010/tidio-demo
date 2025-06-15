@@ -1,4 +1,4 @@
-"use client";                         // ← добавили эту строку
+"use client";
 
 import { useEffect } from "react";
 
@@ -9,8 +9,11 @@ export default function BotLoader({ url }: { url: string }) {
     script.async = true;
     document.body.appendChild(script);
 
-    return () => document.body.removeChild(script); // cleanup
+    // ✅ cleanup возвращает void
+    return () => {
+      document.body.removeChild(script);   // теперь без «return Node»
+    };
   }, [url]);
 
-  return null; // компонент ничего не рендерит
+  return null; // компонент ничего не рисует
 }
