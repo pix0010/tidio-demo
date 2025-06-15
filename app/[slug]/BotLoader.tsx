@@ -1,4 +1,5 @@
-// app/[slug]/BotLoader.tsx
+"use client";                         // ← добавили эту строку
+
 import { useEffect } from "react";
 
 export default function BotLoader({ url }: { url: string }) {
@@ -8,10 +9,7 @@ export default function BotLoader({ url }: { url: string }) {
     script.async = true;
     document.body.appendChild(script);
 
-    // ✅ функция очистки — удаляем скрипт
-    return () => {
-      document.body.removeChild(script);
-    };
+    return () => document.body.removeChild(script); // cleanup
   }, [url]);
 
   return null; // компонент ничего не рендерит
